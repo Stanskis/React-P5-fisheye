@@ -67,7 +67,7 @@ export default function MediaFilters({
         {isOpen && (
           <ul
             className={`
-            absolute z-[150] top-[47px] left-0 w-full primaire-bg shadow-lg overflow-hidden 
+            absolute z-[150] top-[47px] left-0 w-full primaire-bg shadow-xxl overflow-hidden 
             border-x border-t border-white/10
             ${!isOpen ? '' : 'rounded-b-sm'}
             `}
@@ -84,9 +84,8 @@ export default function MediaFilters({
                       setIsOpen(false);
                     }}
                     className={`px-3 py-3 text-sm text-left font-bold cursor-pointer transition-colors
-                ${sortBy === opt.value ? 'bg-white' : 'hover:bg-white/5'}
-                ${!isLast ? 'border-b border-white' : ''} 
-              `}
+                    ${sortBy === opt.value ? 'primaire-bg' : 'hover:bg-white/20'}
+                    ${!isLast ? 'border-b border-white' : ''} `}
                   >
                     {opt.label}
                   </li>
