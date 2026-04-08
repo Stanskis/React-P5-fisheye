@@ -1,0 +1,82 @@
+@import 'tailwindcss';
+
+:root {
+  --background: white;
+  --foreground: #171717;
+  --primaire: #901c1c;
+  --secondaire: #d3573c;
+  --tertiaire-bg: #fafafa;
+  --tertiaire-text: #525252;
+  --price: #757575;
+}
+
+/* @theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+} */
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-dm-sans);
+}
+
+h1 {
+  font-size: 36px;
+  color: var(--primaire);
+}
+
+h2 {
+  color: var(--secondaire);
+}
+
+.primaire-bg {
+  background: var(--primaire);
+  color: #ffffff;
+}
+
+.primaire-text {
+  color: var(--primaire);
+}
+
+.paragraph-text {
+  color: black;
+}
+
+.tertiaire-text {
+  color: var(--tertiaire-text);
+}
+
+.wrapper {
+  width: 1440px;
+  /* height: 1024px; */
+  /* overflow: hidden; */
+  display: flex;
+  flex-direction: column;
+}
+
+/* .secondaire-text {
+  color: var(--secondaire);
+} */
+/* .secondaire-bg {
+  background: var(--secondaire);
+  color: black;
+}
+
+.tertiaire-bg {
+  background: var(--tertiaire-bg);
+  color: var(--tertiaire-text);
+}
+
+.price-text {
+  color: var(--price);
+} */

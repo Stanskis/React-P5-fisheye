@@ -1,0 +1,13 @@
+{
+  "name": "React-P5-fisheye",
+  "version": "1.0.0",
+  "type": "module",
+  "prisma": {
+    "seed": "tsx prisma/seed.js"
+  },
+  "devDependencies": {
+    "@prisma/client": "^6.7.0",
+    "prisma": "^6.7.0",
+    "tsx": "^4.21.0"
+  }
+}
