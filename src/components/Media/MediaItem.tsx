@@ -1,7 +1,7 @@
-import type { IPhoto } from '@/types/media.types';
+import type { IMedia } from '@/types/media.types';
 import Image from 'next/image';
 
-export default function MediaItem({ media }: { media: IPhoto }) {
+export default function MediaItem({ media }: { media: IMedia }) {
   const isVideo = Boolean(media.video);
   const src = isVideo
     ? `/${media.video}`

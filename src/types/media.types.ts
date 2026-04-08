@@ -7,7 +7,7 @@ export interface IBase {
   price: TPrice;
 }
 
-export interface IPhoto extends IBase {
+export interface IMedia extends IBase {
   photographerId: TId;
   title: string;
   image?: string | null;
