@@ -45,7 +45,9 @@ export default function MediaFilters({
       <div className="relative" ref={selectRef}>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="z-[200] rounded-sm p-3 text-sm font-bold primaire-bg shadow-sm flex items-center justify-between min-w-[140px] transition-all"
+          className={`
+                z-[200] p-3 text-sm font-bold primaire-bg shadow-sm flex items-center justify-between min-w-[140px]
+                ${isOpen ? 'rounded-t-sm rounded-b-none' : 'rounded-sm'}`}
         >
           {currentOption.label}
           <span
@@ -63,22 +65,33 @@ export default function MediaFilters({
         </button>
 
         {isOpen && (
-          <ul className="absolute z-150 top-[-1px] left-[-1px] text-left w-full primaire-bg rounded-sm shadow-lg overflow-hidden border border-white/10">
-            {options.map((opt, index) => (
-              <li
-                key={opt.value}
-                onClick={() => {
-                  onSortChange(opt.value);
-                  setIsOpen(false);
-                }}
-                className={`px-3 py-3 text-sm font-bold cursor-pointer transition-colors
-                  ${sortBy === opt.value ? 'bg-white/10' : 'hover:bg-white/5'}
-                  ${index !== options.length - 1 ? 'border-b-1 border-white' : ''} 
-                `}
-              >
-                {opt.label}
-              </li>
-            ))}
+          <ul
+            className={`
+            absolute z-[150] top-[47px] left-0 w-full primaire-bg shadow-lg overflow-hidden 
+            border-x border-t border-white/10
+            ${!isOpen ? '' : 'rounded-b-sm'}
+            `}
+          >
+            {options
+              .filter((opt) => opt.value !== sortBy)
+              .map((opt, index, filteredOptions) => {
+                const isLast = index === filteredOptions.length - 1;
+                return (
+                  <li
+                    key={opt.value}
+                    onClick={() => {
+                      onSortChange(opt.value);
+                      setIsOpen(false);
+                    }}
+                    className={`px-3 py-3 text-sm text-left font-bold cursor-pointer transition-colors
+                ${sortBy === opt.value ? 'bg-white' : 'hover:bg-white/5'}
+                ${!isLast ? 'border-b border-white' : ''} 
+              `}
+                  >
+                    {opt.label}
+                  </li>
+                );
+              })}
           </ul>
         )}
       </div>
