@@ -3,9 +3,11 @@ import { useState } from 'react';
 import MediaItem from './MediaItem';
 import MediaFilters from '../MediaFilters/MediaFilters';
 import type { IMedia } from '@/types/media.types';
+import Lightbox from '../Modals/Lightbox';
 
 export default function Gallery({ medias }: { medias: IMedia[] }) {
   const [sortBy, setSortBy] = useState('popularity');
+  const [selectedMedia, setSelectedMedia] = useState<IMedia | null>(null);
 
   const sortedMedias = [...medias].sort((a, b) => {
     if (sortBy === 'popularity') return Number(b.likes) - Number(a.likes);
@@ -21,9 +23,22 @@ export default function Gallery({ medias }: { medias: IMedia[] }) {
 
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 w-full justify-items-center">
         {sortedMedias.map((media) => (
-          <MediaItem key={media.id} media={media} />
+          <MediaItem
+            key={media.id}
+            media={media}
+            onSelect={() => setSelectedMedia(media)}
+          />
         ))}
       </div>
+
+      {selectedMedia && (
+        <Lightbox
+          mediaList={sortedMedias}
+          currentIndex={sortedMedias.indexOf(selectedMedia)}
+          onClose={() => setSelectedMedia(null)}
+          onChange={(index) => setSelectedMedia(sortedMedias[index])}
+        />
+      )}
     </section>
   );
 }

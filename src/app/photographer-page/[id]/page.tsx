@@ -10,6 +10,10 @@ export default async function PhotographerPage({
   const { id: rawId } = await params;
   const parsedId = parseInt(rawId);
 
+  if (isNaN(parsedId)) {
+    return <div>Invalid id</div>;
+  }
+
   const result = await getPhotographerById(parsedId);
 
   if (!result.success) {

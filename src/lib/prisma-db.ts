@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { IPhotographer } from '@/types/photographer.types';
-import { IPhoto, TId } from '@/types/media.types';
+import { IMedia, TId } from '@/types/media.types';
 
 const prisma = new PrismaClient();
 
@@ -14,7 +14,7 @@ export const getPhotographer = async (id: TId): Promise<IPhotographer | null> =>
 
 export const getAllMediasForPhotographer = async (
   photographerId: TId,
-): Promise<IPhoto[]> =>
+): Promise<IMedia[]> =>
   prisma.media.findMany({
     where: { photographerId },
   });

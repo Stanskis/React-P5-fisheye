@@ -5,6 +5,11 @@ interface MediaFiltersProps {
   sortBy: string;
   onSortChange: (value: string) => void;
 }
+const options = [
+  { value: 'popularity', label: 'Popularité' },
+  { value: 'date', label: 'Date' },
+  { value: 'title', label: 'Titre' },
+];
 
 export default function MediaFilters({
   sortBy,
@@ -12,12 +17,6 @@ export default function MediaFilters({
 }: MediaFiltersProps) {
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
-
-  const options = [
-    { value: 'popularity', label: 'Popularité' },
-    { value: 'date', label: 'Date' },
-    { value: 'title', label: 'Titre' },
-  ];
 
   const currentOption =
     options.find((opt) => opt.value === sortBy) || options[0];
@@ -46,7 +45,7 @@ export default function MediaFilters({
         <button
           onClick={() => setIsOpen(!isOpen)}
           className={`
-                z-[200] p-3 text-sm font-bold primaire-bg shadow-sm flex items-center justify-between min-w-[140px]
+                z-[200] p-3 text-sm font-bold primaire-bg shadow-sm flex items-center justify-between min-w-[140px] cursor-pointer
                 ${isOpen ? 'rounded-t-sm rounded-b-none' : 'rounded-sm'}`}
         >
           {currentOption.label}
@@ -67,8 +66,8 @@ export default function MediaFilters({
         {isOpen && (
           <ul
             className={`
-            absolute z-[150] top-[47px] left-0 w-full primaire-bg shadow-xxl overflow-hidden 
-            border-x border-t border-white/10
+            absolute z-[150] top-[46px] left-0 w-full shadow-xl overflow-hidden 
+             border-t border-white/10
             ${!isOpen ? '' : 'rounded-b-sm'}
             `}
           >
@@ -83,8 +82,7 @@ export default function MediaFilters({
                       onSortChange(opt.value);
                       setIsOpen(false);
                     }}
-                    className={`px-3 py-3 text-sm text-left font-bold cursor-pointer transition-colors
-                    ${sortBy === opt.value ? 'primaire-bg' : 'hover:bg-white/20'}
+                    className={`px-3 py-3 text-sm text-left primaire-bg font-bold cursor-pointer transition-colors
                     ${!isLast ? 'border-b border-white' : ''} `}
                   >
                     {opt.label}

@@ -16,7 +16,7 @@ export default function PhotographerProfile(photographer: IPhotographer) {
         </div>
         <div>
           <button
-            className="bg-primaire primaire-bg font-bold text-white py-4 px-4 rounded cursor-pointer"
+            className="primaire-bg font-bold py-4 px-4 rounded cursor-pointer transition-colors hover:secondaire-bg"
             onClick={() => alert('Contact form coming soon!')}
           >
             Contactez-moi

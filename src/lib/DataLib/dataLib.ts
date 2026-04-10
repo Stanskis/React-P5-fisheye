@@ -1,5 +1,5 @@
 import { IPhotographer } from '@/types/photographer.types';
-import { TId, IPhoto } from '@/types/media.types';
+import { TId, IMedia } from '@/types/media.types';
 import {
   getAllPhotographers,
   getPhotographer,
@@ -38,20 +38,20 @@ export async function getPhotographerById(
       return { success: false, error: 'Photographer not found' };
     }
     return { success: true, data: photographer };
-  } catch (e) {
-    console.error('getPhotographerById', e);
+  } catch (error) {
+    console.error('getPhotographerById', error);
     return { success: false, error: 'Failed to fetch photographer' };
   }
 }
 
 export async function getPhotographerMediaById(
   photographerId: TId,
-): Promise<TDataResult<IPhoto[]>> {
+): Promise<TDataResult<IMedia[]>> {
   try {
     const photos = await getAllMediasForPhotographer(photographerId);
     return { success: true, data: photos };
-  } catch (e) {
-    console.error('getPhotographerMediaById', e);
+  } catch (error) {
+    console.error('getPhotographerMediaById', error);
     return { success: false, error: 'Failed to fetch photos' };
   }
 }

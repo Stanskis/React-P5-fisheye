@@ -43,6 +43,10 @@ h2 {
   background: var(--primaire);
   color: #ffffff;
 }
+.primaire-bg:hover {
+  background: var(--secondaire);
+  color: #ffffff;
+}
 
 .primaire-text {
   color: var(--primaire);
