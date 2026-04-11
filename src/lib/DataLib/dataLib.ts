@@ -20,7 +20,7 @@ export async function allPhotographers(): Promise<
   TDataResult<IPhotographer[]>
 > {
   try {
-    // throw new Error('Simulated error fetching photographers'); // Simulate an error
+    // throw new Error('Simulated error fetching photographers');
     const photographers = await getAllPhotographers();
     return { success: true, data: photographers };
   } catch (error) {

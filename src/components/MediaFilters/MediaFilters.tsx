@@ -40,7 +40,7 @@ export default function MediaFilters({
 
   return (
     <div className="flex items-center gap-3 justify-center md:justify-start mb-6">
-      <label className="text-sm font-bold">Trier par</label>
+      <div className="text-sm font-bold">Trier par</div>
       <div className="relative" ref={selectRef}>
         <button
           onClick={() => setIsOpen(!isOpen)}

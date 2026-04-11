@@ -6,13 +6,14 @@ interface MediaItemProps {
   onSelect: (media: IMedia) => void;
 }
 
+const getSrc = (media: IMedia): string => {
+  if (media.video) return `/${media.video}`;
+  return `/${media.image ?? 'placeholder.png'}`;
+};
+
 export default function MediaItem({ media, onSelect }: MediaItemProps) {
   const isVideo = Boolean(media.video);
-  const src = isVideo
-    ? media.video!.startsWith('/')
-      ? media.video!
-      : `/${media.video}`
-    : `/${media.image ?? 'placeholder.png'}`;
+  const src = getSrc(media);
 
   return (
     <div className="w-[350px] flex flex-col rounded-md overflow-hidden">
@@ -30,14 +31,16 @@ export default function MediaItem({ media, onSelect }: MediaItemProps) {
         ) : (
           <Image
             src={src}
-            alt={media.title || 'Media content'}
+            alt=""
+            loading="eager"
             fill
+            sizes="(max-width: 350px)"
             className="object-cover object-top"
           />
         )}
       </div>
       <div className="flex justify-between items-center primaire-text py-3">
-        <h4 className="truncate">{media.title || 'No title'}</h4>
+        <h3 className="truncate">{media.title || 'No title'}</h3>
         <p className="text-sm flex items-center gap-1 shrink-0">
           {media.likes}{' '}
           <span role="img" aria-label="likes" className="text-xl">

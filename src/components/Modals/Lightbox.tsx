@@ -84,7 +84,7 @@ export default function Lightbox({
               src={media.image ? `/${media.image}` : '/placeholder.png'}
               alt={media.title || 'Media content'}
               fill
-              className="object-cover object-[center_15%] rounded-sm shadow-2xl"
+              className="object-cover object-[center_25%] rounded-sm shadow-2xl"
             />
           )}
         </div>

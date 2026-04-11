@@ -10,7 +10,7 @@ export default async function MediasList({ photographerId }: MediasListProps) {
   const result = await getPhotographerMediaById(photographerId);
 
   if (!result.success) {
-    return <div className="text-red-500">Error...</div>;
+    return <div className="text-red-500">{result.error}</div>;
   }
 
   return <MediaGalleryClient medias={result.data} />;

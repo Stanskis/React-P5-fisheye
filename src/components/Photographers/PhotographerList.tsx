@@ -15,10 +15,12 @@ export default async function PhotographersList() {
   const photographers = result.data;
 
   return (
-    <ul className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 w-full justify-items-center mt-8">
-      {photographers.map((p) => (
-        <PhotographerCard key={p.id} photographer={p} />
-      ))}
-    </ul>
+    <section className="my-8">
+      <ul className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 w-full justify-items-center mt-8">
+        {photographers.map((p) => (
+          <PhotographerCard key={p.id} photographer={p} />
+        ))}
+      </ul>
+    </section>
   );
 }

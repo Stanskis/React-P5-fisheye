@@ -20,9 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className={`${dmSans.variable} h-full antialiased`}>
+    <html lang="fr" className={`${dmSans.variable} antialiased`}>
       <body>
-        <div className="wrapper mx-auto h-full">
+        <div className="wrapper mx-auto">
           <Header />
           <main>{children}</main>
         </div>

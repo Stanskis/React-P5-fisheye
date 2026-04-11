@@ -1,7 +1,12 @@
 'use client';
+
+import { useState } from 'react';
 import { IPhotographer } from '@/types/photographer.types';
+import ContactForm from '../Modals/ContactForm';
 
 export default function PhotographerProfile(photographer: IPhotographer) {
+  const [contactForm, setContactForm] = useState(false);
+
   return (
     <>
       <div className="grid grid-cols-3 bg-gray-100 p-6 rounded-lg items-center gap-4">
@@ -16,8 +21,8 @@ export default function PhotographerProfile(photographer: IPhotographer) {
         </div>
         <div>
           <button
-            className="primaire-bg font-bold py-4 px-4 rounded cursor-pointer transition-colors hover:secondaire-bg"
-            onClick={() => alert('Contact form coming soon!')}
+            className="primaire-bg font-bold py-4 px-4 rounded cursor-pointer transition-colors"
+            onClick={() => setContactForm(true)}
           >
             Contactez-moi
           </button>
@@ -29,6 +34,14 @@ export default function PhotographerProfile(photographer: IPhotographer) {
             className="w-48 h-48 rounded-full object-cover"
           />
         </div>
+
+        {contactForm && (
+          <ContactForm
+            isOpen={contactForm}
+            onClose={() => setContactForm(false)}
+            photographer={photographer}
+          />
+        )}
       </div>
     </>
   );

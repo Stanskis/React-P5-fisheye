@@ -16,7 +16,7 @@ export default function PhotographerCard({
         <span className="w-48 h-48 rounded-full overflow-hidden block">
           <img
             src={`/${photographer.portrait}`}
-            alt={photographer.name}
+            alt={''}
             className="w-full h-full object-cover scale-125"
           />
         </span>
