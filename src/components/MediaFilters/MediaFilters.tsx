@@ -34,9 +34,11 @@ export default function MediaFilters({ sortBy, onSortChange }: MediaFiltersProps
   return (
     <div
       className="flex items-center gap-3 justify-center md:justify-start mb-6"
-      aria-label="polite"
+      aria-live="polite"
     >
-      <div className="text-sm font-bold">Trier par</div>
+      <div id="sort-label" className="text-sm font-bold">
+        Trier par
+      </div>
       <div className="relative" ref={selectRef}>
         <button
           id="sort-button"

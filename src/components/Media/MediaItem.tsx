@@ -37,7 +37,7 @@ export default function MediaItem({ media, onSelect }: MediaItemProps) {
         ) : (
           <Image
             src={src}
-            alt={media.title || 'Image'}
+            alt=""
             loading="eager"
             fill
             sizes="(max-width: 350px)"
