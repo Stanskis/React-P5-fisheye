@@ -7,7 +7,7 @@ export default function PhotographerStats({
 }) {
   return (
     <div
-      className="fixed bottom-0 right-[19.1%] flex items-center gap-10 px-4 py-2 quaternaire-bg rounded-t-lg"
+      className="fixed bottom-0 right-[19%] flex items-center gap-10 px-4 py-2 quaternaire-bg rounded-t-lg"
       aria-label="Statistiques du photographe"
     >
       <span className="text-black font-bold text-xl" aria-label={`${totalLikes} likes`}>
