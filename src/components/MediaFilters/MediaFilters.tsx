@@ -11,22 +11,15 @@ const options = [
   { value: 'title', label: 'Titre' },
 ];
 
-export default function MediaFilters({
-  sortBy,
-  onSortChange,
-}: MediaFiltersProps) {
+export default function MediaFilters({ sortBy, onSortChange }: MediaFiltersProps) {
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
 
-  const currentOption =
-    options.find((opt) => opt.value === sortBy) || options[0];
+  const currentOption = options.find((opt) => opt.value === sortBy) || options[0];
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        selectRef.current &&
-        !selectRef.current.contains(event.target as Node)
-      ) {
+      if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
@@ -39,10 +32,19 @@ export default function MediaFilters({
   }, []);
 
   return (
-    <div className="flex items-center gap-3 justify-center md:justify-start mb-6">
+    <div
+      className="flex items-center gap-3 justify-center md:justify-start mb-6"
+      aria-label="polite"
+    >
       <div className="text-sm font-bold">Trier par</div>
       <div className="relative" ref={selectRef}>
         <button
+          id="sort-button"
+          aria-haspopup="listbox"
+          aria-expanded={isOpen}
+          aria-labelledby="sort-label"
+          aria-activedescendant={`option-${sortBy}`}
+          aria-label={`Trier par ${currentOption.label}`}
           onClick={() => setIsOpen(!isOpen)}
           className={`
                 z-[200] p-3 text-sm font-bold primaire-bg shadow-sm flex items-center justify-between min-w-[140px] cursor-pointer
@@ -65,6 +67,8 @@ export default function MediaFilters({
 
         {isOpen && (
           <ul
+            role="listbox"
+            aria-label="Options de tri"
             className={`
             absolute z-[150] top-[46px] left-0 w-full shadow-xl overflow-hidden 
              border-t border-white/10
@@ -77,7 +81,10 @@ export default function MediaFilters({
                 const isLast = index === filteredOptions.length - 1;
                 return (
                   <li
+                    id={`option-${opt.value}`}
                     key={opt.value}
+                    role="option"
+                    aria-selected={opt.value === sortBy}
                     onClick={() => {
                       onSortChange(opt.value);
                       setIsOpen(false);

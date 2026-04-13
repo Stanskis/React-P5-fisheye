@@ -9,7 +9,7 @@ export default function PhotographerProfile(photographer: IPhotographer) {
 
   return (
     <>
-      <div className="grid grid-cols-3 bg-gray-100 p-6 rounded-lg items-center gap-4">
+      <section className="grid grid-cols-3 bg-gray-100 p-6 rounded-lg items-center gap-4">
         <div className="text-left flex flex-col">
           <h2 id={`photographer-${photographer.id}`} className="text-6xl">
             {photographer.name}
@@ -23,6 +23,7 @@ export default function PhotographerProfile(photographer: IPhotographer) {
           <button
             className="primaire-bg font-bold py-4 px-4 rounded cursor-pointer transition-colors"
             onClick={() => setContactForm(true)}
+            aria-label={`Contacter ${photographer.name}`}
           >
             Contactez-moi
           </button>
@@ -30,7 +31,7 @@ export default function PhotographerProfile(photographer: IPhotographer) {
         <div className="flex justify-center">
           <img
             src={`/${photographer.portrait}`}
-            alt={photographer.name}
+            alt={`Portrait de ${photographer.name}`}
             className="w-48 h-48 rounded-full object-cover"
           />
         </div>
@@ -42,7 +43,7 @@ export default function PhotographerProfile(photographer: IPhotographer) {
             photographer={photographer}
           />
         )}
-      </div>
+      </section>
     </>
   );
 }

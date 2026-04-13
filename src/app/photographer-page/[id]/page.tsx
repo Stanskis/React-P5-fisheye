@@ -29,7 +29,7 @@ export default async function PhotographerPage({
   return (
     <article className="text-center w-4/5 mx-auto my-4">
       <PhotographerProfile {...photographer} />
-      <MediasList photographerId={photographer.id} />
+      <MediasList photographerId={photographer.id} price={photographer.price} />
     </article>
   );
 }

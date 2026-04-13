@@ -39,17 +39,21 @@ export default function Lightbox({
     <div
       className="fixed inset-0 z-[999] flex items-center justify-center bg-white/80 backdrop-blur-sm transition-all"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Visionnaire de la galerie"
     >
       <div
         className="relative w-[1350px] flex flex-col items-center primaire-text"
         onClick={(e) => e.stopPropagation()}
       >
         <button
-          className="absolute top-2 right-2 text-8xl text-semibold hover:text-gray-300 z-[10] transition-colors focus:outline-none cursor-pointer"
+          className="absolute top-2 right-2 text-8xl text-semibold z-[10] transition-colors cursor-pointer"
           onClick={(e) => {
             e.stopPropagation();
             onClose();
           }}
+          aria-label="Fermer"
         >
           &times;
         </button>
@@ -59,6 +63,7 @@ export default function Lightbox({
             e.stopPropagation();
             handlePrev();
           }}
+          aria-label="Image précédente"
         >
           ‹
         </button>
@@ -68,6 +73,7 @@ export default function Lightbox({
             e.stopPropagation();
             handleNext();
           }}
+          aria-label="Image suivante"
         >
           ›
         </button>

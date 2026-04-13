@@ -36,6 +36,9 @@ export default function ContactModal({
     <div
       className="fixed inset-0 z-[999] flex items-center justify-center bg-white/100 backdrop-blur-sm transition-all"
       onClick={(e) => e.target === e.currentTarget && onClose()}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="contact-modal-title"
     >
       <div className="relative text-left w-full max-w-md rounded-xl p-4 pt-2 shadow-2xl quaternaire-bg">
         {/* Close button */}
@@ -45,30 +48,32 @@ export default function ContactModal({
             e.stopPropagation();
             onClose();
           }}
+          aria-label="Fermer le formulaire de contact"
         >
           &times;
         </button>
 
         {submitted ? (
-          <p className="text-form text-xl font-medium mt-4">
-            Message a bien été envoyé!
-          </p>
+          <p className="text-form text-xl font-medium mt-4">Message a bien été envoyé!</p>
         ) : (
           <>
             {/* Title */}
-            <h1 className="mb-6 pr-8 text-5xl font-[350] leading-tight text-black">
+            <h1
+              className="mb-6 pr-8 text-5xl font-[350] leading-tight text-black"
+              id="contact-modal-title"
+            >
               Contactez-moi
               <br />
               {` ${photographer.name}`}
             </h1>
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col gap-1 text-form"
-            >
+            <form onSubmit={handleSubmit} className="flex flex-col gap-1 text-form">
               {/* Prénom */}
               <div>
-                <label className="block text-xl ">Prénom</label>
+                <label htmlFor="prenom" className="block text-xl ">
+                  Prénom
+                </label>
                 <input
+                  id="prenom"
                   name="prenom"
                   type="text"
                   autoComplete="given-name"
@@ -78,8 +83,11 @@ export default function ContactModal({
 
               {/* Nom */}
               <div>
-                <label className="block text-xl">Nom</label>
+                <label htmlFor="nom" className="block text-xl">
+                  Nom
+                </label>
                 <input
+                  id="nom"
                   name="nom"
                   type="text"
                   autoComplete="family-name"
@@ -89,8 +97,11 @@ export default function ContactModal({
 
               {/* Email */}
               <div>
-                <label className="block text-xl">Email</label>
+                <label htmlFor="email" className="block text-xl">
+                  Email
+                </label>
                 <input
+                  id="email"
                   name="email"
                   type="email"
                   autoComplete="email"
@@ -100,8 +111,11 @@ export default function ContactModal({
 
               {/* Message */}
               <div>
-                <label className="block text-xl">Votre message</label>
+                <label htmlFor="message" className="block text-xl">
+                  Votre message
+                </label>
                 <textarea
+                  id="message"
                   name="message"
                   rows={5}
                   className="w-full rounded-md bg-white px-3.5 py-2.5 text-sm text-gray-900 outline-none"
@@ -112,6 +126,7 @@ export default function ContactModal({
               <button
                 type="submit"
                 className="mt-2 w-fit primaire-bg rounded px-8 py-3 text-sm font-semibold transition-colors cursor-pointer"
+                aria-label="Envoyer le message"
               >
                 Envoyer
               </button>

@@ -1,5 +1,6 @@
 import type { IMedia } from '@/types/media.types';
 import Image from 'next/image';
+import LikeButton from '../Buttons/LikeButton';
 
 interface MediaItemProps {
   media: IMedia;
@@ -20,18 +21,23 @@ export default function MediaItem({ media, onSelect }: MediaItemProps) {
       <div
         className="relative w-full h-[350px] rounded-md overflow-hidden cursor-pointer"
         onClick={() => onSelect(media)}
+        role="button"
+        aria-label={`Voir le media ${media.title}`}
+        tabIndex={0}
+        onKeyDown={(e) => e.key === 'Enter' && onSelect(media)}
       >
         {isVideo ? (
           <video
             src={src}
             className="w-full h-full object-cover"
+            aria-label={media.title || 'Vidéo'}
             muted
             playsInline
           />
         ) : (
           <Image
             src={src}
-            alt=""
+            alt={media.title || 'Image'}
             loading="eager"
             fill
             sizes="(max-width: 350px)"
@@ -41,12 +47,7 @@ export default function MediaItem({ media, onSelect }: MediaItemProps) {
       </div>
       <div className="flex justify-between items-center primaire-text py-3">
         <h3 className="truncate">{media.title || 'No title'}</h3>
-        <p className="text-sm flex items-center gap-1 shrink-0">
-          {media.likes}{' '}
-          <span role="img" aria-label="likes" className="text-xl">
-            ❤
-          </span>
-        </p>
+        <LikeButton mediaId={media.id} initLikes={media.likes} />
       </div>
     </div>
   );

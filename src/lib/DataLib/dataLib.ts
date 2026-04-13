@@ -4,6 +4,7 @@ import {
   getAllPhotographers,
   getPhotographer,
   getAllMediasForPhotographer,
+  updateNumberOfLikes,
 } from '../prisma-db';
 
 type TDataResult<T> =
@@ -16,9 +17,17 @@ type TDataResult<T> =
       error: string;
     };
 
-export async function allPhotographers(): Promise<
-  TDataResult<IPhotographer[]>
-> {
+type TActionResult =
+  | {
+      success: true;
+      message: string;
+    }
+  | {
+      success: false;
+      error: string;
+    };
+
+export async function allPhotographers(): Promise<TDataResult<IPhotographer[]>> {
   try {
     // throw new Error('Simulated error fetching photographers');
     const photographers = await getAllPhotographers();
@@ -29,9 +38,7 @@ export async function allPhotographers(): Promise<
   }
 }
 
-export async function getPhotographerById(
-  id: TId,
-): Promise<TDataResult<IPhotographer>> {
+export async function getPhotographerById(id: TId): Promise<TDataResult<IPhotographer>> {
   try {
     const photographer = await getPhotographer(id);
     if (!photographer) {
@@ -53,5 +60,18 @@ export async function getPhotographerMediaById(
   } catch (error) {
     console.error('getPhotographerMediaById', error);
     return { success: false, error: 'Failed to fetch photos' };
+  }
+}
+
+export async function toggleLikeCount(
+  mediaId: TId,
+  liked: boolean,
+): Promise<TActionResult> {
+  try {
+    await updateNumberOfLikes(mediaId, liked);
+    return { success: true, message: 'Likes updated successfully' };
+  } catch (error) {
+    console.error('toggleLikeCount', error);
+    return { success: false, error: 'Failed to update likes' };
   }
 }

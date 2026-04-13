@@ -19,8 +19,8 @@ export const getAllMediasForPhotographer = async (
     where: { photographerId },
   });
 
-export const updateNumberOfLikes = (mediaId: TId, newNumberOfLikes: number) =>
+export const updateNumberOfLikes = (mediaId: TId, increment: boolean) =>
   prisma.media.update({
     where: { id: mediaId },
-    data: { likes: newNumberOfLikes },
+    data: { likes: increment ? { increment: 1 } : { decrement: 1 } },
   });
