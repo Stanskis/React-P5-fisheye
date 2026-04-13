@@ -14,7 +14,7 @@ export default function PhotographerStats({
         {totalLikes.toLocaleString('fr-FR')} ♥
       </span>
       <span
-        className="text-black font-bold text-xl"
+        className="text-black font-medium text-xl"
         aria-label={`${price} euros par jour`}
       >
         {price}€ / jour

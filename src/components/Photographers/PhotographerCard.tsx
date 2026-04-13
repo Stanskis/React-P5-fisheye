@@ -22,7 +22,7 @@ export default function PhotographerCard({
         </span>
         <h2
           id={`photographer-${photographer.id}`}
-          className="secondaire-text text-3xl mt-2"
+          className="secondaire-text text-photographer-name mt-2"
         >
           {photographer.name}
         </h2>
@@ -30,11 +30,13 @@ export default function PhotographerCard({
           Accéder au profil
         </span>
       </Link>
-      <p className="primaire-text text-xs mt-1">
+      <p className="primaire-text text-location">
         {photographer.city}, {photographer.country}
       </p>
-      <p className="paragraph-text text-sm mt-1">{photographer.tagline}</p>
-      <p className="tertiaire-text text-xs mt-1">{photographer.price}€/jour</p>
+      <p className="text-tagline mt-1">{photographer.tagline}</p>
+      <p className="tertiaire-text text-price-photographer mt-1">
+        {photographer.price}€/jour
+      </p>
     </li>
   );
 }

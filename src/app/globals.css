@@ -70,6 +70,23 @@ h2 {
   flex-direction: column;
 }
 
+.text-photographer-name {
+  font-size: 36px;
+}
+
+.text-location {
+  font-size: 13px;
+}
+
+.text-tagline {
+  font-size: 10px;
+  color: black;
+}
+
+.text-price-photographer {
+  font-size: 9px;
+}
+
 @media (min-width: 2200px) {
   .wrapper {
     width: 2200px;
