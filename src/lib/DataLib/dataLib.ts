@@ -17,15 +17,15 @@ type TDataResult<T> =
       error: string;
     };
 
-type TActionResult =
-  | {
-      success: true;
-      message: string;
-    }
-  | {
-      success: false;
-      error: string;
-    };
+// type TActionResult =
+//   | {
+//       success: true;
+//       message: string;
+//     }
+//   | {
+//       success: false;
+//       error: string;
+//     };
 
 export async function allPhotographers(): Promise<TDataResult<IPhotographer[]>> {
   try {
@@ -68,11 +68,10 @@ export async function getPhotographerMediaById(
 export async function toggleLikeCount(
   mediaId: TId,
   liked: boolean,
-): Promise<TActionResult> {
+): Promise<TDataResult<void>> {
   try {
-    // throw new Error();
     await updateNumberOfLikes(mediaId, liked);
-    return { success: true, message: 'Likes updated successfully' };
+    return { success: true, data: undefined };
   } catch (error) {
     console.error('toggleLikeCount', error);
     return { success: false, error: 'Failed to update likes' };
