@@ -20,7 +20,7 @@ export default function Gallery({ medias }: { medias: IMedia[] }) {
     <section className="w-full flex flex-col my-6">
       <MediaFilters sortBy={sortBy} onSortChange={setSortBy} />
 
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 w-full justify-items-center">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 w-full">
         {sortedMedias.map((media) => (
           <MediaItem
             key={media.id}

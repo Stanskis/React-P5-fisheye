@@ -13,7 +13,7 @@ export default function PhotographerCard({
         className="flex flex-col items-center"
         aria-labelledby={`photographer-${photographer.id} action-${photographer.id}`}
       >
-        <span className="w-48 h-48 rounded-full overflow-hidden block">
+        <span className="w-48 h-48 rounded-full overflow-hidden">
           <img
             src={`/${photographer.portrait}`}
             alt={''}

@@ -17,16 +17,6 @@ type TDataResult<T> =
       error: string;
     };
 
-// type TActionResult =
-//   | {
-//       success: true;
-//       message: string;
-//     }
-//   | {
-//       success: false;
-//       error: string;
-//     };
-
 export async function allPhotographers(): Promise<TDataResult<IPhotographer[]>> {
   try {
     // throw new Error();
