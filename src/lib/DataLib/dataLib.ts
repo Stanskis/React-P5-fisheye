@@ -29,7 +29,7 @@ type TActionResult =
 
 export async function allPhotographers(): Promise<TDataResult<IPhotographer[]>> {
   try {
-    // throw new Error('Simulated error fetching photographers');
+    // throw new Error();
     const photographers = await getAllPhotographers();
     return { success: true, data: photographers };
   } catch (error) {
@@ -40,6 +40,7 @@ export async function allPhotographers(): Promise<TDataResult<IPhotographer[]>> 
 
 export async function getPhotographerById(id: TId): Promise<TDataResult<IPhotographer>> {
   try {
+    // throw new Error();
     const photographer = await getPhotographer(id);
     if (!photographer) {
       return { success: false, error: 'Photographer not found' };
@@ -55,6 +56,7 @@ export async function getPhotographerMediaById(
   photographerId: TId,
 ): Promise<TDataResult<IMedia[]>> {
   try {
+    // throw new Error();
     const photos = await getAllMediasForPhotographer(photographerId);
     return { success: true, data: photos };
   } catch (error) {
@@ -68,6 +70,7 @@ export async function toggleLikeCount(
   liked: boolean,
 ): Promise<TActionResult> {
   try {
+    // throw new Error();
     await updateNumberOfLikes(mediaId, liked);
     return { success: true, message: 'Likes updated successfully' };
   } catch (error) {

@@ -6,9 +6,9 @@ export default async function PhotographersList() {
 
   if (!result.success) {
     return (
-      <div className="border text-red-500 p-4 bg-red-50 rounded-lg w-1/2 h-full text-center my-8">
-        <p>{result.error}</p>
-      </div>
+      <p className="border text-red-500 p-4 bg-red-50 rounded-lg h-full text-center my-8">
+        {result.error}
+      </p>
     );
   }
 

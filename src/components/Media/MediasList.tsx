@@ -12,9 +12,12 @@ export default async function MediasList({ photographerId, price }: MediasListPr
   const result = await getPhotographerMediaById(photographerId);
 
   if (!result.success) {
-    return <div className="text-red-500">{result.error}</div>;
+    return (
+      <p className="border text-red-500 p-4 bg-red-50 rounded-lg h-full text-center my-8">
+        {result.error}
+      </p>
+    );
   }
-
   const totalLikes = result.data.reduce((acc, media) => acc + media.likes, 0);
 
   return (
