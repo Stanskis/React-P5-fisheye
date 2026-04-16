@@ -11,8 +11,7 @@ export default function Gallery({ medias }: { medias: IMedia[] }) {
 
   const sortedMedias = [...medias].sort((a, b) => {
     if (sortBy === 'popularity') return Number(b.likes) - Number(a.likes);
-    if (sortBy === 'date')
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    if (sortBy === 'date') return new Date(b.date).getTime() - new Date(a.date).getTime();
     if (sortBy === 'title') return a.title.localeCompare(b.title);
     return 0;
   });

@@ -9,7 +9,7 @@ export default function PhotographerProfile(photographer: IPhotographer) {
 
   return (
     <>
-      <section className="grid grid-cols-3 bg-gray-100 p-6 rounded-lg items-center gap-4">
+      <article className="grid grid-cols-3 bg-gray-100 p-6 rounded-lg items-center gap-4">
         <div className="text-left flex flex-col">
           <h2 id={`photographer-${photographer.id}`} className="text-6xl">
             {photographer.name}
@@ -43,7 +43,7 @@ export default function PhotographerProfile(photographer: IPhotographer) {
             photographer={photographer}
           />
         )}
-      </section>
+      </article>
     </>
   );
 }
