@@ -50,7 +50,7 @@ export default function LikeButton({
       aria-label={`${likes} likes, ${isLiked ? 'retirer le like' : 'ajouter un like'}`}
     >
       {likes}
-      <Heart />
+      <Heart aria-hidden="true" />
     </button>
   );
 }
